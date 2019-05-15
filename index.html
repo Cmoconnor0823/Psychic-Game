@@ -19,15 +19,24 @@
 
       <script src="assets/javaScript/game.js">
       //create and array of possible choices
-      var computerChoices = ['example', 'string', 'list'];
+      var computerChoices = ['r', 'p', 's'];
 
       //create variables for counts?
       var wins = 0;
       var losses = 0;
       var fail = undefined; //is this correct if I dont have an input at the start
-      
-      
-      
+
+      //var relating to html
+
+      var directionsVan = document.getElementById ("directions-van");
+      var directionsText = document.getElementById ("directions-text");
+      var winText = document.getElementById ("win-text");
+      var lossesText = document.getElementById ("losses-text");
+      var guessesLeft = document.getElementById ("guesses-left");
+      var failGuess = document.getElementById ("fail-guess");
+      var computerGuess = document.getElementById ("computer-guess");
+
+     // at this point I moved the code to the js sheet
       </script>
 </body>
 </html>
