@@ -6,7 +6,8 @@
       var losses = 0;
       var failGuess = []; 
       var guessesLeft = 9;
-      //var relating to html
+      
+      //var to print to html
 
       var directionsVan = document.getElementById ("directions-van");
       var directionsText = document.getElementById ("directions-text");
