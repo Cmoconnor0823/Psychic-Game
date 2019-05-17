@@ -30,11 +30,11 @@
 
 
         function countGuessesLeft() {
-            document.getElementById("#guesses-left").innerHTML = "Guesses Left: " + guessesLeft;
+            document.getElementById("#guessesLeft").innerHTML="Guesses Left: " + guessesLeft;
         }
 
         function farUserGuesses() {
-            document.getElementById("#fail-guess").innerHTML = "Your Guesses so far: " + letterUser.join(' ');
+            document.getElementById("#fail-guess").innerHTML="Your Guesses so far: " + letterUser.join(' ');
         }
         
         countGuessesLeft();
