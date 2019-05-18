@@ -3,9 +3,8 @@
 
       //create variables for counts?
       var wins = 0;
-      var losses = 0;
-      var failGuess = []; 
-      var guessesLeft = 9;
+      var losses = 0; 
+      var guessCount = [10];
       
       //var to print to html
 
@@ -17,53 +16,43 @@
       var failGuess = document.getElementById ("fail-guess");
       var computerGuess = document.getElementById ("computer-guess");
 
+      //adding debugging attempt remove function
+
+      var guessesLeft = document.getElementById("guesses-left");
+
+      //code to make computer randomly choose from array
+
+      var computerGuess = computerChoices [
+        Math.floor(Math.random()*computerChoices.length)];
+      
+        ///in here lies the problem????
+      var restart = function() {
+          guessesLeft = 9;
+          failGuess = [];
+          var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      }
         
- document.onkeyup = function(event){
+    document.onkeyup = function(event){
          //determines which key was pressed
 
-    var userGuess = event.key;
-    console.log(userGuess)
+        var userGuess = event.key;
+        console.log(userGuess)
 
-    //code to make computer randomly choose from array
-
-    var computerGuess = computerChoices [
-        Math.floor(Math.random()*computerChoices.length)];
-
-
-        function countGuessesLeft() {
-            document.getElementById("#guessesLeft").innerHTML="Guesses Left: " + guessesLeft;
-        }
-
-        function farUserGuesses() {
-            document.getElementById("#fail-guess").innerHTML="Your Guesses so far: " + letterUser.join(' ');
-        }
         
-        countGuessesLeft();
-        
-        var restart = function() {
-            guessesLeft = 9;
-            failGuess = [];
-            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-        }
-    guessesLeft--;
-
-	userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-	failguess.push(userGuess);
-	countGuessesLeft();
-	farUserGuesses();
-
-	if (userGuess === computerGuess){
+        if (userGuess === computerGuess){
 		wins++;
 		document.querySelector("#win-text").innerHTML = "Wins: " + wins;
 		restart();
-	} 
-	else if (guessesLeft === 0) {
+	    } 
+        
+        else if (guessesLeft === 0) {
 		losses++;
 		document.querySelector("#lose-text").innerHTML = "Loses: " + losses;
 		restart();
-	}
-  };
+        }
+    
+        guessesLeft.textContent = "You have: " + (10 - guessCount.length) + " tries remaining.";
+    };
 
 
 
