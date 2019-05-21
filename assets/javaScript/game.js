@@ -5,9 +5,9 @@ var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l
 //create variables for counts?
 var wins = 0;
 var losses = 0;
-var userGuess = [];
-var guessesLeft = 9;
-var choicesToGuess = null;
+//var userGuess = null;
+var guessLeft = 9;
+var choiceToGuess;
 var failGuessArr = [];
 
 
@@ -22,30 +22,22 @@ var failGuess = document.getElementById("fail-guess");
 //var computerGuess = document.getElementById ("computer-guess");
 
 
-///in here lies the problem????
-
 var restart = function () {
-  userGuess = [];
+  userGuess = "";
   guessCount = 9;
   computerGuess();
-  guessesLeft = 9;
+  guessLeft = 9;
   failGuessArr = [];
 }
 
 //code to make computer randomly choose from array
 var computerGuess = function () {
-  choicesToGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
-  console.log(choicesToGuess)
-
+  choiceToGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
 }
-//code to print user guesses so far
-var userGuess = function () {
-  document.getElementById("fail-guess").innerHTML = "Guesses so far: " + userGuess.join(",");
-};
 
 computerGuess();
 
-
+//start this function on key up
 document.onkeyup = function (event) {
   //determines which key was pressed
 
@@ -53,29 +45,48 @@ document.onkeyup = function (event) {
   console.log(userGuess)
 
 
-  
-//wins do not record
-  if (userGuess === computerGuess) {
+  /**
+   * = is reassign
+   * == compare (dont check for types) '5' == 5 true
+   * ==== compare (checks for types) '5' === 5 false
+   */
+
+
+  console.log("userGuess", userGuess)
+  console.log("computerGuess", computerGuess)
+  console.log("choiceToGuess", choiceToGuess)
+  if (userGuess === choiceToGuess) {
     wins++;
-    document.querySelector("#win-text").innerHTML = "Wins: " + (wins) ;
-    //restart();
+    document.querySelector("#win-text").innerHTML = "Wins: " + (wins);
     console.log(wins)
+    console.log(userGuess)
+    restart();
+    failGuess.innerHTML = "Your Guesses so far: " + failGuessArr.join(",")
+
   }
-   
+
+
 
   else {
-    losses++;
-    document.querySelector("#losses-text").innerHTML = "Loses: " + (losses) ;
+
+
+    if (guessLeft === 0) {
+      losses++;
+      restart();
+    }
+
+    document.querySelector("#losses-text").innerHTML = "Loses: " + (losses);
 
     failGuessArr.push(userGuess);
+    console.log(failGuessArr)
     failGuess.innerHTML = "Your Guesses so far: " + failGuessArr.join(",")
-    guessesLeft.textContent = "You have: " + (10 - failGuessArr.length) + " tries remaining.";
+    guessLeft--;
+    guessesLeft.textContent = "You have: " + (guessLeft) + " tries remaining.";
+    console.log(guessLeft, "guessLeft");
 
-}
-  //else {
-    //restart()
+    //if reached end of count re start
 
- // }
+  }
 
 };
 
