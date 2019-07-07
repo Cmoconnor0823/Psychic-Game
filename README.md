@@ -7,5 +7,5 @@ at which point the game will restart and continue keeping a total score count.
 
 Made with Html, Css, and Js
 
-For comments/ concerns email me @ Cmoconnor0823@gmail.com
+For comments/ concerns email Caitlin O'Connor @ Cmoconnor0823@gmail.com
 
